@@ -1,37 +1,339 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 01</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 01 - Nguyễn Minh Đăng</title>
+  
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+  <style>
+    :root {
+      --primary: #06b6d4;          /* Cyan công nghệ */
+      --secondary: #8b5cf6;        /* Tím neon */
+      --accent: #ec4899;           /* Hồng nổi bật */
+      --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #0d1527 100%);
+      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background: #090d16;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Các quầng sáng trang trí nền (Aurora Glow) */
+    .glow-bg-1 {
+      position: absolute;
+      top: 15%;
+      left: 20%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-bg-2 {
+      position: absolute;
+      bottom: 15%;
+      right: 20%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Thẻ trung tâm chính */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 620px;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 42px 36px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7),
+                  0 0 40px -10px rgba(6, 182, 212, 0.15);
+      text-align: center;
+    }
+
+    /* Huy hiệu góc trên */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(6, 182, 212, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #ffffff 30%, #67e8f9 70%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .topic {
+      color: #cbd5e1;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    /* Thẻ profile sinh viên */
+    .profile-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+
+    .user-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    }
+
+    .user-meta h3 {
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .user-meta span {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+    }
+
+    .status-tag {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      padding: 5px 12px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Lưới các khối chi tiết */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 16px 12px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .info-icon {
+      color: #38bdf8;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .info-card .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .info-card .value {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      word-break: break-all;
+    }
+
+    /* Cụm nút bấm */
+    .action-group {
+      display: flex;
+      gap: 14px;
+    }
+
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-glow {
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn-glow:hover {
+      box-shadow: 0 6px 26px rgba(6, 182, 212, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 580px) {
+      .card { padding: 30px 20px; }
+      h1 { font-size: 1.85rem; }
+      .info-grid { grid-template-columns: 1fr; }
+      .action-group { flex-direction: column; }
+    }
+  </style>
+</head>
 <body>
 
-    <div class="container">
+  <!-- Hiệu ứng quầng sáng chuyển màu ngầm -->
+  <div class="glow-bg-1"></div>
+  <div class="glow-bg-2"></div>
 
-        <h1>Assignment 01</h1>
-
-        <h2>Domain - Hosting - GitHub</h2>
-
-        <p>Họ và tên: Nguyễn Minh Đăng</p>
-
-        <p>Đây là website được tạo cho Assignment 01.</p>
-
-        <p>Website được quản lý bằng Git và GitHub.</p>
-
+  <!-- Bảng giao diện chính duy nhất -->
+  <div class="card">
+    <div class="badge">
+      <span class="badge-dot"></span> Assignment 01
     </div>
 
-</body>
+    <h1>Assignment 01</h1>
+    <div class="topic">Domain • Hosting • GitHub</div>
 
-    <h2>Domain - Hosting - GitHub</h2>
+    <div class="profile-pill">
+      <div class="user-meta">
+        <div class="avatar">
+          <i class="fa-solid fa-user-check"></i>
+        </div>
+        <div>
+          <h3>Nguyễn Minh Đăng</h3>
+          <span>Sinh viên thực hiện</span>
+        </div>
+      </div>
+      <div class="status-tag">
+        <i class="fa-solid fa-circle-check"></i> Hoàn thành
+      </div>
+    </div>
 
-    <p>Họ và tên: Nguyễn Minh Đăng</p>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+        <div class="label">Domain</div>
+        <div class="value">nguyenminhdang21.id.vn</div>
+      </div>
 
-    <p>Đây là website được tạo cho Assignment 01.</p>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-server"></i></div>
+        <div class="label">Hosting</div>
+        <div class="value">GitHub Pages</div>
+      </div>
 
-    <p>Website được quản lý bằng Git và GitHub.</p>
+      <div class="info-card">
+        <div class="info-icon"><i class="fa-solid fa-code-branch"></i></div>
+        <div class="label">Version Control</div>
+        <div class="value">Git & GitHub</div>
+      </div>
+    </div>
+
+    <div class="action-group">
+      <a href="https://github.com/minhnoluv1234/assignment01-web" target="_blank" class="btn btn-glass">
+        <i class="fa-brands fa-github"></i> Repository
+      </a>
+      <a href="http://nguyenminhdang21.id.vn" class="btn btn-glow">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> Tên miền cá nhân
+      </a>
+    </div>
+  </div>
 
 </body>
 </html>
