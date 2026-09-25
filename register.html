@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký nhận thông tin</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f8cf88;
+            color: #5a3a16;
+        }
+
+        .page {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        header {
+            height: 115px;
+            position: relative;
+            border-bottom: 1px solid #d9a95e;
+        }
+
+        .brand-left {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #6d5235;
+        }
+
+        .logo {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 65px;
+            font-weight: bold;
+            color: #300000;
+            font-family: "Old English Text MT", Georgia, serif;
+        }
+
+        .tagline {
+            position: absolute;
+            top: 38px;
+            right: 0;
+            font-size: 13px;
+            font-style: italic;
+            color: #6d5235;
+        }
+
+        .search {
+            position: absolute;
+            right: 0;
+            top: 65px;
+        }
+
+        .search input {
+            width: 150px;
+            height: 24px;
+            border: 1px solid #c9a267;
+            padding: 4px;
+        }
+
+        .search button {
+            height: 25px;
+            background: #27843b;
+            color: white;
+            border: 1px solid #1d632b;
+            font-weight: bold;
+        }
+
+        /* MAIN */
+        .content {
+            display: flex;
+            gap: 15px;
+            padding-top: 15px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 205px;
+        }
+
+        .menu {
+            background: #8a5a16;
+            padding: 6px;
+            border-radius: 3px;
+        }
+
+        .menu a {
+            display: block;
+            background: #3c0000;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            padding: 18px 5px;
+            margin-bottom: 7px;
+        }
+
+        .menu a:last-child {
+            margin-bottom: 0;
+        }
+
+        .social {
+            margin-top: 15px;
+            background: #fff1b9;
+            border: 1px solid #f1d28b;
+        }
+
+        .social h3 {
+            margin: 0;
+            padding: 9px;
+            text-align: center;
+            background: #f1ce82;
+            font-size: 18px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            padding: 18px;
+            font-size: 20px;
+        }
+
+        .placeholder {
+            margin-top: 20px;
+            background: #f4bd62;
+            padding: 8px;
+            border: 1px solid #d49a3c;
+        }
+
+        .placeholder h3 {
+            background: #c58a1c;
+            text-align: center;
+            padding: 9px;
+            margin: 0 0 10px;
+        }
+
+        .placeholder p {
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .placeholder a {
+            color: green;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .view-more {
+            display: block;
+            background: linear-gradient(#62c56d, #16832d);
+            color: white !important;
+            text-align: center;
+            font-size: 18px !important;
+            padding: 6px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+
+        /* REGISTER */
+        .main {
+            width: 700px;
+            background: #fffdf5;
+            padding: 20px 35px 35px;
+        }
+
+        .main h1 {
+            color: #75501e;
+            font-size: 27px;
+            font-weight: normal;
+            margin-top: 0;
+        }
+
+        .intro {
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        fieldset {
+            margin-bottom: 7px;
+            border: 1px solid #aaa;
+            padding: 8px 10px 15px;
+        }
+
+        legend {
+            font-size: 14px;
+            padding: 0 3px;
+        }
+
+        .form-row {
+            margin: 12px 0 20px;
+            font-size: 13px;
+        }
+
+        .form-row label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            font-family: Arial, sans-serif;
+            border: 1px solid #aaa;
+            padding: 3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            width: 140px;
+        }
+
+        textarea {
+            width: 245px;
+            height: 55px;
+            resize: none;
+        }
+
+        .gender label,
+        .interest label,
+        .terms label {
+            display: inline;
+            margin-right: 4px;
+        }
+
+        .buttons {
+            margin-top: 5px;
+        }
+
+        .buttons button {
+            background: linear-gradient(#63c76c, #19852d);
+            color: white;
+            border: 1px solid #287b32;
+            padding: 2px 8px;
+            font-family: Georgia, serif;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 30px;
+            border-top: 1px solid #e6bd73;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .footer-columns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-item {
+            width: 22%;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background: #a7742b;
+            color: #fff1bd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 27px;
+        }
+
+        .copyright {
+            border-top: 4px solid #d2a353;
+            margin-top: 30px;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 10px;
+            color: #a37a39;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand-left">Blakletterpress</div>
+
+        <div class="logo">BŁP</div>
+
+        <div class="tagline">
+            Your online source of trusted news
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Enter search query">
+            <button>Search</button>
+        </div>
+    </header>
+
+
+    <div class="content">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <nav class="menu">
+                <a href="index.html">HOME</a>
+                <a href="#">ABOUT</a>
+                <a href="#">NEWS</a>
+                <a href="#">BLOG</a>
+            </nav>
+
+            <div class="social">
+                <h3>Connect with us:</h3>
+
+                <div class="social-icons">
+                    <span>♥</span>
+                    <span>f</span>
+                    <span>G+</span>
+                </div>
+            </div>
+
+            <div class="placeholder">
+                <h3>Placeholder</h3>
+
+                <p>
+                    <b>Title Sample One</b><br>
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Donec eleifend ligula vel velit varius
+                </p>
+
+                <a href="#">Read more</a>
+
+                <p>
+                    <b>Title Sample One</b><br>
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Donec eleifend ligula vel velit varius
+                </p>
+
+                <a href="#">Read more</a>
+
+                <a href="#" class="view-more">View More</a>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN REGISTER -->
+        <main class="main">
+
+            <h1>Đăng ký nhận thông tin</h1>
+
+            <p class="intro">
+                Điền thông tin bên dưới để nhận bản tin định kỳ.
+                Các trường có dấu * là bắt buộc.
+            </p>
+
+
+            <form>
+
+                <fieldset>
+                    <legend>Thông tin tài khoản</legend>
+
+                    <div class="form-row">
+                        <label for="fullname">Họ và tên *</label>
+                        <input
+                            type="text"
+                            id="fullname"
+                            name="fullname"
+                            placeholder="Nguyễn Văn A"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Email *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="ban@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">
+                            Mật khẩu * (tối thiểu 8 ký tự)
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <label for="phone">
+                            Số điện thoại * (10 số, bắt đầu bằng 0)
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            pattern="0[0-9]{9}"
+                            required
+                        >
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Thông tin cá nhân</legend>
+
+                    <div class="form-row">
+                        <label for="birthday">Ngày sinh *</label>
+
+                        <input
+                            type="date"
+                            id="birthday"
+                            name="birthday"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <label for="age">Độ tuổi *</label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            min="1"
+                            max="120"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-row gender">
+                        <label>Giới tính *</label>
+
+                        <input type="radio" id="male" name="gender" value="Nam" required>
+                        <label for="male">Nam</label>
+
+                        <input type="radio" id="female" name="gender" value="Nữ">
+                        <label for="female">Nữ</label>
+
+                        <input type="radio" id="other" name="gender" value="Khác">
+                        <label for="other">Khác</label>
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Tùy chọn nhận tin</legend>
+
+                    <div class="form-row interest">
+                        <label>Chủ đề quan tâm</label>
+
+                        <input type="checkbox" id="news" name="topic" value="Tin tức">
+                        <label for="news">Tin tức</label>
+
+                        <input type="checkbox" id="blog" name="topic" value="Blog">
+                        <label for="blog">Blog</label>
+
+                        <input type="checkbox" id="event" name="topic" value="Sự kiện">
+                        <label for="event">Sự kiện</label>
+                    </div>
+
+
+                    <div class="form-row">
+                        <label for="area">Khu vực</label>
+
+                        <select id="area" name="area">
+                            <option value="">-- Chọn khu vực --</option>
+                            <option value="ha-noi">Hà Nội</option>
+                            <option value="hcm">TP. Hồ Chí Minh</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-row">
+                        <label for="message">Lời nhắn *</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Bạn muốn nhận nội dung gì?"
+                            required
+                        ></textarea>
+                    </div>
+
+
+                    <div class="form-row terms">
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
+
+                        <label for="terms">
+                            Tôi đã đồng ý với điều khoản sử dụng *
+                        </label>
+                    </div>
+
+                </fieldset>
+
+
+                <div class="buttons">
+                    <button type="submit">Đăng ký</button>
+                    <button type="reset">Nhập lại</button>
+                </div>
+
+            </form>
+
+        </main>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-columns">
+
+            <div class="footer-item">
+                <div class="footer-icon">⌂</div>
+                This website template has been designed by Free Website Templates for you, for free.
+                You can replace all this text with your own text.
+            </div>
+
+            <div class="footer-item">
+                <div class="footer-icon">♟</div>
+                This website template has been designed by Free Website Templates for you, for free.
+                You can replace all this text with your own text.
+            </div>
+
+            <div class="footer-item">
+                <div class="footer-icon">◎</div>
+                This website template has been designed by Free Website Templates for you, for free.
+                You can replace all this text with your own text.
+            </div>
+
+            <div class="footer-item">
+                <div class="footer-icon">✎</div>
+                This website template has been designed by Free Website Templates for you, for free.
+                You can replace all this text with your own text.
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © Copyright © 2011. Company name all rights reserved
+        </div>
+
+    </footer>
+
+</div>
+
+</body>
+</html>

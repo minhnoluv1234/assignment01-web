@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ngày hội Công nghệ Xanh 2026</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background: #f8cf88;
+            color: #5a3a16;
+        }
+
+        .page {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            height: 115px;
+            position: relative;
+            border-bottom: 1px solid #d9a95e;
+        }
+
+        .brand-left {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #6d5235;
+        }
+
+        .logo {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 65px;
+            font-weight: bold;
+            color: #300000;
+            font-family: "Old English Text MT", Georgia, serif;
+        }
+
+        .tagline {
+            position: absolute;
+            top: 38px;
+            right: 0;
+            font-size: 13px;
+            font-style: italic;
+            color: #6d5235;
+        }
+
+        .search {
+            position: absolute;
+            right: 0;
+            top: 65px;
+        }
+
+        .search input {
+            width: 150px;
+            height: 24px;
+            border: 1px solid #c9a267;
+            padding: 4px;
+        }
+
+        .search button {
+            height: 25px;
+            background: #27843b;
+            color: white;
+            border: 1px solid #1d632b;
+            font-weight: bold;
+        }
+
+        .content {
+            display: flex;
+            gap: 15px;
+            padding-top: 15px;
+        }
+
+        .sidebar {
+            width: 205px;
+        }
+
+        .menu {
+            background: #8a5a16;
+            padding: 6px;
+        }
+
+        .menu a {
+            display: block;
+            background: #3c0000;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            padding: 18px 5px;
+            margin-bottom: 7px;
+        }
+
+        .menu a:last-child {
+            margin-bottom: 0;
+        }
+
+        .social {
+            margin-top: 15px;
+            background: #fff1b9;
+            border: 1px solid #f1d28b;
+        }
+
+        .social h3 {
+            margin: 0;
+            padding: 9px;
+            text-align: center;
+            background: #f1ce82;
+            font-size: 18px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+            padding: 18px;
+            font-size: 20px;
+        }
+
+        .placeholder {
+            margin-top: 20px;
+            background: #f4bd62;
+            padding: 8px;
+            border: 1px solid #d49a3c;
+        }
+
+        .placeholder h3 {
+            background: #c58a1c;
+            text-align: center;
+            padding: 9px;
+            margin: 0 0 10px;
+        }
+
+        .placeholder p {
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .placeholder a {
+            color: green;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .view-more {
+            display: block;
+            background: linear-gradient(#62c56d, #16832d);
+            color: white !important;
+            text-align: center;
+            font-size: 18px !important;
+            padding: 6px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+
+        /* MEDIA CONTENT */
+
+        .main {
+            width: 700px;
+            background: #fffdf5;
+            padding: 20px 35px 35px;
+        }
+
+        .main h1 {
+            color: #75501e;
+            font-size: 27px;
+            font-weight: normal;
+            margin-top: 0;
+        }
+
+        .meta {
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        article {
+            text-align: center;
+        }
+
+        article img {
+            max-width: 100%;
+            display: block;
+            margin: 15px auto;
+        }
+
+        .main h2 {
+            font-size: 18px;
+            color: #2f2112;
+            margin-top: 25px;
+        }
+
+        .main p {
+            font-size: 13px;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .main figure {
+            margin: 20px 0;
+        }
+
+        .main figure img {
+            width: 100%;
+        }
+
+        figcaption {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        video {
+            width: 100%;
+            max-height: 330px;
+            background: black;
+            margin-top: 10px;
+        }
+
+        audio {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .map {
+            width: 100%;
+            height: 260px;
+            border: 0;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 30px;
+            border-top: 1px solid #e6bd73;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .footer-columns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-item {
+            width: 22%;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background: #a7742b;
+            color: #fff1bd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 27px;
+        }
+
+        .copyright {
+            border-top: 4px solid #d2a353;
+            margin-top: 30px;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 10px;
+            color: #a37a39;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="brand-left">
+            Blakletterpress
+        </div>
+
+        <div class="logo">
+            BŁP
+        </div>
+
+        <div class="tagline">
+            Your online source of trusted news
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Enter search query">
+            <button>Search</button>
+        </div>
+
+    </header>
+
+
+    <div class="content">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <nav class="menu">
+                <a href="index.html">HOME</a>
+                <a href="#">ABOUT</a>
+                <a href="#">NEWS</a>
+                <a href="#">BLOG</a>
+            </nav>
+
+            <div class="social">
+
+                <h3>Connect with us:</h3>
+
+                <div class="social-icons">
+                    <span>♥</span>
+                    <span>f</span>
+                    <span>G+</span>
+                </div>
+
+            </div>
+
+
+            <div class="placeholder">
+
+                <h3>Placeholder</h3>
+
+                <p>
+                    <b>Title Sample One</b><br>
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Donec eleifend ligula vel velit varius
+                </p>
+
+                <a href="#">Read more</a>
+
+                <p>
+                    <b>Title Sample One</b><br>
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Donec eleifend ligula vel velit varius
+                </p>
+
+                <a href="#">Read more</a>
+
+                <a href="#" class="view-more">
+                    View More
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <article>
+
+                <h1>
+                    Ngày hội Công nghệ Xanh 2026
+                </h1>
+
+                <div class="meta">
+                    22/04/2026 · Tác giả:
+                    <u>Ban tổ chức Blakletterpress</u>
+                </div>
+
+
+                <!-- IMAGE -->
+                <figure>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                        alt="Hội trường trong ngày hội công nghệ"
+                    >
+
+                    <figcaption>
+                        Hội trường chính trong ngày khai mạc sự kiện năm 2026.
+                    </figcaption>
+
+                </figure>
+
+
+                <section>
+
+                    <h2>
+                        Giới thiệu sự kiện
+                    </h2>
+
+                    <p>
+                        Ngày hội Công nghệ Xanh 2026 quy tụ các diễn giả
+                        và doanh nghiệp theo đuổi giải pháp công nghệ bền vững.
+                        Sự kiện gồm nhiều hoạt động giao lưu, chia sẻ
+                        và trải nghiệm dành cho sinh viên.
+                    </p>
+
+                </section>
+
+
+                <!-- VIDEO -->
+                <section>
+
+                    <h2>
+                        Video giới thiệu
+                    </h2>
+
+                    <video controls poster="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80">
+                        <source src="" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+
+                </section>
+
+
+                <!-- AUDIO -->
+                <section>
+
+                    <h2>
+                        Podcast: Trò chuyện cùng diễn giả
+                    </h2>
+
+                    <p>
+                        Nghe lại buổi phỏng vấn khách mời chính của chương trình:
+                    </p>
+
+                    <audio controls>
+                        <source src="" type="audio/mpeg">
+                        Trình duyệt của bạn không hỗ trợ audio.
+                    </audio>
+
+                </section>
+
+
+                <!-- MAP -->
+                <section>
+
+                    <h2>
+                        Địa điểm tổ chức
+                    </h2>
+
+                    <p>
+                        Sự kiện diễn ra tại Hà Nội. Xem bản đồ đường đi bên dưới:
+                    </p>
+
+                    <iframe
+                        class="map"
+                        src="https://www.google.com/maps?q=Hanoi,Vietnam&output=embed"
+                        loading="lazy">
+                    </iframe>
+
+                </section>
+
+
+                <!-- IMAGE -->
+                <section>
+
+                    <h2>
+                        Hình ảnh các mùa trước
+                    </h2>
+
+                    <figure>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80"
+                            alt="Hình ảnh hoạt động công nghệ"
+                        >
+
+                        <figcaption>
+                            Khu trưng bày sản phẩm xanh mùa 2025.
+                        </figcaption>
+
+                    </figure>
+
+                    <p>
+                        Chủ đề:
+                        <u>Công nghệ xanh, phát triển bền vững</u>.
+                    </p>
+
+                </section>
+
+            </article>
+
+        </main>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-columns">
+
+            <div class="footer-item">
+                <div class="footer-icon">⌂</div>
+                This website template has been designed by Free Website
+                Templates for you, for free. You can replace all this text
+                with your own text.
+            </div>
+
+            <div class="footer-item">
+                <div class="footer-icon">♟</div>
+                This website template has been designed by Free Website
+                Templates for you, for free. You can replace all this text
+                with your own text.
+            </div>
+
+            <div class="footer-item">
+                <div class="footer-icon">◎</div>
+                This website template has been designed by Free Website
+                Templates for you, for free. You can replace all this text
+                with your own text.
+            </div>
+
+            <div class="footer-item">
+                <div class="footer-icon">✎</div>
+                This website template has been designed by Free Website
+                Templates for you, for free. You can replace all this text
+                with your own text.
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © Copyright © 2011. Company name all rights reserved
+        </div>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
